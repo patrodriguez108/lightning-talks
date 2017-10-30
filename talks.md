@@ -1,6 +1,6 @@
 # Rails Helpers
 
-### Rails helpers move complexity and logic from view, making it easier to read
+### Rails helpers move complexity and logic from view making it easier to read
 
   For example:
   Instead of
@@ -242,7 +242,46 @@ end
 
   “form_for”  is used mostly when your form involves a database interaction.  What it does is, it creates a form and a scope around a specific model object that is used as a base for questioning about values for the fields. And you use form_tag, when you don’t have any database interaction.
 
+## Asset Helpers
 
+  - asset_path
+  - asset_url
+  - audio_path
+  - audio_url
+  - compute_asset_extname
+  - compute_asset_host
+  - compute_asset_path
+  - font_path
+  - font_url
+  - image_path
+  - image_url
+  - javascript_path
+  - javascript_url
+  - path_to_asset
+  - path_to_audio
+  - path_to_font
+  - path_to_image
+  - path_to_javascript
+  - path_to_stylesheet
+  - path_to_video
+  - public_compute_asset_path
+  - stylesheet_path
+  - stylesheet_url
+  - url_to_asset
+  - url_to_audio
+  - url_to_font
+  - url_to_image
+  - url_to_javascript
+  - url_to_stylesheet
+  - url_to_video
+  - video_path
+  - video_url
+
+
+image_tag("rails.png")
+# => <img alt="Rails" src="http://assets.example.com/assets/rails.png" />
+stylesheet_link_tag("application")
+# => <link href="http://assets.example.com/assets/application.css" media="screen" rel="stylesheet" />
 
 
 
