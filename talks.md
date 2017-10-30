@@ -1,9 +1,38 @@
 # Rails Helpers
 
+### Rails helpers move complexity and logic from view, making it easier to read
+
+  For example:
+  Instead of
+  ```
+  <% if @user && @user.email.present? %>
+    <%= @user.email %>
+  <% end %>
+  ```
+
+  We could make helper
+  ```ruby
+  module SiteHelper
+    def user_email(user)
+      user.email if user && user.email.present?
+    end
+  end
+  ```
+
+  Which would result in the following when retrieving the email in the view
+  ```
+  <%= user_email(@user) %>
+  ```
+
+
+  Helper methods are just modules, that are available to you view.
+  #### Note: You sould try not to dump all helpers in the application controller
+
+# Built-in Helpers
 ## link_to Helper
 
 posts_path refers to the action that we created in /config/routes
-```ruby
+```
 <%= link_to 'Back to Posts', posts_path %>
 <!-- this generates the HTML... -->
 <a href="/posts">Back to Posts</a>
@@ -76,7 +105,7 @@ end
   ## form helpers
 
   Regular way of making form
-  ```ruby
+  ```
   <form action="/somepath" method="post">
     <input type="text">
     <!-- other inputs here -->
@@ -85,7 +114,7 @@ end
   ```
 
   Rails way using form_tag
-  ```ruby
+  ```
   <%= form_tag("/search", method: "get") do %>
     <%= label_tag(:q, "Search for:") %>
     <%= text_field_tag(:q) %>
@@ -101,12 +130,12 @@ end
   ```
 
   Rails by default automatically protects you from cross-site request forgery and it requires you to verify that the form was actually submitted from a page you generated. In order to do so, it generates an “authenticity token” which looks like gibberish but helps Rails match the form with your session and the application.
-  ```ruby
+  ```
   Parameters: {"utf8"=>"✓", "authenticity_token"=>"jJa87aK1OpXfjojryBk2Db6thv0K3bSZeYTuW8hF4Ns=", "user"=>{"first_name"=>"foo","last_name"=>"bar","email"=>"foo@bar.com"}, "commit"=>"Submit Form"}
   ```
 
   Helpers you can use inside your form
-  ```ruby
+  ```
   <%= text_area_tag(:message, "Hi, nice site", size: "24x6") %>
   <textarea id="message" name="message" cols="24" rows="6">Hi, nice site</textarea>
 
@@ -154,7 +183,7 @@ end
   ```
 
   When using PATCH, PUT, DELETE
-  ```ruby
+  ```
   form_tag(search_path, method: "patch")
 
   <!-- Will output -->
