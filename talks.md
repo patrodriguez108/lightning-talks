@@ -31,13 +31,11 @@
 # Built-in Helpers
 
 ## URL helpers
+### Route Helper
 
 Hard coded path: ```"/posts/#{@post.id}"```
 
-  Hard coded
-
-
-Route helper: ```post_path(@post)]```
+Route helper: ```post_path(@post)```
   - Route helpers are more dynamic
 
   - keeps view and controller clean
@@ -74,8 +72,7 @@ Route helper: ```post_path(@post)]```
     ```
 
 
-
-#### link_to Helper
+### link_to Helper
 
 posts_path refers to the action that we created in /config/routes
 ```
@@ -241,7 +238,10 @@ end
   </form>
   ```
 
-  ### NOTE: form_for can only be used on models.
+  Difference between form_for and form_tag
+
+  “form_for”  is used mostly when your form involves a database interaction.  What it does is, it creates a form and a scope around a specific model object that is used as a base for questioning about values for the fields. And you use form_tag, when you don’t have any database interaction.
+
 
 
 
