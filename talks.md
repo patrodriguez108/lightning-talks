@@ -33,7 +33,43 @@
 ## URL helpers
 
 Hard coded path: ```"/posts/#{@post.id}"```
+
+  Hard coded
+
+
 Route helper: ```post_path(@post)]```
+    - Route helpers are more dynamic
+    - keeps view and controller clean
+    - the ability to pass in arguments makes the path more readable
+        - For example: ```post_path(post, opt_in: true)``` compared to this ```"posts/<%= post.id %>?opt_in=true"```
+    - Route helpers translate directly into HTML-friendly paths thata can be read properly by browsers
+
+    ```ruby
+    # Regular Routes
+    get 'posts', to: 'posts#index', as: 'posts'
+    get 'posts/new', to: 'posts#new', as: 'new_post'
+    post 'posts', to: 'posts#create'
+    get 'posts/:id', to: 'posts#show', as: 'post'
+    get 'posts/:id/edit', to: 'posts#edit', as: 'edit_post'
+    patch 'posts/:id', to: 'posts#update'
+    delete 'posts/:id', to: 'posts#destroy'
+
+    # Nested Routes Routes
+    get 'posts/:post_id/comments', to: 'comments#index', as: 'post_comments'
+    get 'posts/:post_id/comments/new', to: 'comments#new', as: 'new_post_comment'
+    post 'posts/:post_id/comments', to: 'comments#create'
+    get 'posts/:post_id/comments/:id', to: 'comments#show', as: 'post_comment'
+    get 'posts/:post_id/comments/:id/edit', to: 'comments#edit', as: 'edit_post_comment'
+    patch 'posts/:post_id/comments/:id', to: 'comments#update'
+    delete 'posts/:post_id/comments/:id', to: 'comments#destroy'
+
+    # this will automatically create these paths
+    resources :posts do
+      resources :comments
+    end
+    ```
+
+
 
 #### link_to Helper
 
