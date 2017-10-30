@@ -29,7 +29,13 @@
   #### Note: You sould try not to dump all helpers in the application controller
 
 # Built-in Helpers
-## link_to Helper
+
+## URL helpers
+
+Hard coded path: ```"/posts/#{@post.id}"```
+Route helper: ```post_path(@post)]```
+
+#### link_to Helper
 
 posts_path refers to the action that we created in /config/routes
 ```
