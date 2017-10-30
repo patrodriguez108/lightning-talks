@@ -38,15 +38,15 @@ Hard coded path: ```"/posts/#{@post.id}"```
 
 
 Route helper: ```post_path(@post)]```
-    - Route helpers are more dynamic
+  - Route helpers are more dynamic
 
-    - keeps view and controller clean
+  - keeps view and controller clean
 
-    - the ability to pass in arguments makes the path more readable
+  - the ability to pass in arguments makes the path more readable
 
-        + For example: ```post_path(post, opt_in: true)``` compared to this ```"posts/<%= post.id %>?opt_in=true"```
+      + For example: ```post_path(post, opt_in: true)``` compared to this ```"posts/<%= post.id %>?opt_in=true"```
 
-    - Route helpers translate directly into HTML-friendly paths thata can be read properly by browsers
+  - Route helpers translate directly into HTML-friendly paths thata can be read properly by browsers
 
     ```ruby
     # Regular Routes
